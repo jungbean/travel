@@ -31,7 +31,7 @@ body{margin:0}
   font-family:'Pretendard Variable',Pretendard,-apple-system,system-ui,sans-serif;
   word-break:keep-all; line-height:1.55; color:var(--t1);
   background:var(--bg); min-height:100vh; -webkit-font-smoothing:antialiased;
-  max-width:520px; margin:0 auto; padding-bottom:44px;
+  max-width:520px; margin:0 auto; padding-bottom:calc(64px + env(safe-area-inset-bottom));
   transition:background .5s ease;
 }
 .app[data-day="1"]{--bg:#12100A; --acc:#E0B457}

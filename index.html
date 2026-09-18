@@ -20,6 +20,7 @@
 body{margin:0}
 
 .app{
+  /* 간격은 4·8·12·16·20·24·32 만 쓴다. 8pt 그리드에 half-step 4 를 허용한 계단이다. */
   --ins:16px;
   --bg:#0A0806; --acc:#E8B457;
   --g1:rgba(255,255,255,.055);   /* 유리 표면 */
@@ -52,54 +53,54 @@ img{display:block}
 .cover>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .cover .veil{position:absolute;inset:0;background:linear-gradient(to bottom,
   rgba(6,5,8,.42) 0%,rgba(6,5,8,.06) 24%,rgba(8,6,6,.44) 56%,rgba(10,8,6,.88) 84%,var(--bg) 100%)}
-.cover .head{position:absolute;left:var(--ins);right:var(--ins);bottom:26px}
-.chip{display:inline-flex;align-items:center;gap:7px;height:32px;padding:0 13px;border-radius:999px;
+.cover .head{position:absolute;left:var(--ins);right:var(--ins);bottom:24px}
+.chip{display:inline-flex;align-items:center;gap:4px;height:32px;padding:0 12px;border-radius:999px;
   background:rgba(255,255,255,.14);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);
   font-size:13px;font-weight:600;letter-spacing:-.01em}
 .chip .dot{width:6px;height:6px;border-radius:50%;background:var(--acc)}
 .title{margin:16px 0 0;font-size:48px;font-weight:700;letter-spacing:-.04em;line-height:1.02}
 .subtitle{margin:12px 0 0;font-size:17px;font-weight:500;color:rgba(255,255,255,.88)}
-.meta{margin:5px 0 0;font-size:15px;color:var(--t3)}
+.meta{margin:4px 0 0;font-size:15px;color:var(--t3)}
 
 /* ── 일차 카드 (사진이 카드다) ── */
-.sec{margin-top:30px}
+.sec{margin-top:32px}
 
 .daycard{display:block;position:relative;width:100%;aspect-ratio:4/5;border-radius:26px;overflow:hidden;
   margin-bottom:12px;background:#0C0C0E}
 .daycard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .daycard .sh{position:absolute;inset:0;background:linear-gradient(to bottom,
   rgba(0,0,0,.34) 0%,rgba(0,0,0,.02) 28%,rgba(0,0,0,.46) 66%,rgba(0,0,0,.84) 100%)}
-.daycard .in{position:absolute;left:17px;right:17px;bottom:17px}
-.daycard .dnum{display:inline-flex;align-items:center;gap:7px;height:28px;padding:0 11px;border-radius:999px;
+.daycard .in{position:absolute;left:var(--ins);right:var(--ins);bottom:16px}
+.daycard .dnum{display:inline-flex;align-items:center;gap:4px;height:28px;padding:0 12px;border-radius:999px;
   background:rgba(255,255,255,.16);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.16);font-size:12px;font-weight:600;letter-spacing:-.005em}
 .daycard .dnum b{font-weight:700}
-.daycard .dt{display:block;margin-top:11px;font-size:27px;font-weight:700;letter-spacing:-.032em;line-height:1.15}
-.daycard .dsub{display:block;margin-top:7px;font-size:14px;color:rgba(255,255,255,.7)}
+.daycard .dt{display:block;margin-top:8px;font-size:27px;font-weight:700;letter-spacing:-.032em;line-height:1.15}
+.daycard .dsub{display:block;margin-top:4px;font-size:14px;color:rgba(255,255,255,.7)}
 
-.linkrow{display:flex;align-items:center;justify-content:space-between;width:100%;padding:14px 16px;min-height:48px;
+.linkrow{display:flex;align-items:center;justify-content:space-between;width:100%;padding:12px 16px;min-height:48px;
   background:var(--g1);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
   box-shadow:inset 0 0 0 1px var(--g2);border-radius:16px;margin-bottom:12px}
 .linkrow .lt{font-size:16px;font-weight:500}
-.linkrow .lv{display:flex;align-items:center;gap:7px;font-size:14px;color:var(--t3)}
+.linkrow .lv{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--t3)}
 
 /* ── 일차 상세 ── */
 .dcover{position:relative;height:46vh;min-height:320px;max-height:460px;overflow:hidden}
 .dcover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .dcover .sh{position:absolute;inset:0;background:linear-gradient(to bottom,
   rgba(0,0,0,.5) 0%,rgba(0,0,0,.04) 30%,rgba(0,0,0,.4) 62%,rgba(0,0,0,.84) 88%,var(--bg) 100%)}
-.dcover .nav{position:absolute;top:14px;left:12px;right:12px;display:flex;justify-content:space-between}
+.dcover .nav{position:absolute;top:12px;left:12px;right:12px;display:flex;justify-content:space-between}
 .dcover .in{position:absolute;left:var(--ins);right:var(--ins);bottom:20px}
 .dcover .dd{font-size:13px;font-weight:600;color:var(--acc);letter-spacing:-.005em}
-.dcover .dt{margin:7px 0 0;font-size:32px;font-weight:700;letter-spacing:-.035em;line-height:1.16}
+.dcover .dt{margin:8px 0 0;font-size:32px;font-weight:700;letter-spacing:-.035em;line-height:1.16}
 
 .gbtn{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;flex:none;
   background:rgba(0,0,0,.34);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
 .gbtn svg{width:17px;height:17px}
 
-.tabs{display:flex;gap:7px;padding:16px var(--ins) 4px}
+.tabs{display:flex;gap:8px;padding:16px var(--ins) 4px}
 .tab{flex:1;height:36px;border-radius:999px;display:grid;place-items:center;font-size:14px;font-weight:500;
   background:var(--g1);box-shadow:inset 0 0 0 1px var(--g2);color:var(--t2)}
 .tab[aria-selected="true"]{background:#fff;color:#111;box-shadow:none;font-weight:600}
@@ -110,19 +111,19 @@ img{display:block}
   background:var(--g1);backdrop-filter:blur(24px) saturate(1.3);-webkit-backdrop-filter:blur(24px) saturate(1.3);
   box-shadow:inset 0 0 0 1px var(--g2)}
 .item.add{background:var(--g3);box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--acc) 30%, transparent)}
-.item .top{display:flex;align-items:center;gap:10px}
+.item .top{display:flex;align-items:center;gap:8px}
 .item .ic{width:30px;height:30px;border-radius:50%;flex:none;display:grid;place-items:center;
   background:color-mix(in srgb, var(--acc) 17%, transparent);color:var(--acc)}
 .item .ic svg{width:16px;height:16px}
 .item .t{font-size:13px;font-weight:600;color:var(--t2);letter-spacing:.005em}
 .item .tag{margin-left:auto;font-size:10.5px;font-weight:700;letter-spacing:.05em;color:var(--acc)}
-.item .n{margin:9px 0 0;font-size:17px;font-weight:600;letter-spacing:-.02em;line-height:1.35}
-.item .ja{margin:2px 0 0;font-size:13px;color:var(--t3)}
-.item .s{margin:5px 0 0;font-size:14px;color:var(--t2);line-height:1.5}
+.item .n{margin:8px 0 0;font-size:17px;font-weight:600;letter-spacing:-.02em;line-height:1.35}
+.item .ja{margin:4px 0 0;font-size:13px;color:var(--t3)}
+.item .s{margin:4px 0 0;font-size:14px;color:var(--t2);line-height:1.5}
 
-.nt{margin-top:12px;padding-top:12px;border-top:1px solid var(--hair);display:flex;gap:9px;
+.nt{margin-top:12px;padding-top:12px;border-top:1px solid var(--hair);display:flex;gap:8px;
   font-size:13.5px;line-height:1.5;color:var(--t2)}
-.nt svg{width:15px;height:15px;flex:none;margin-top:3px;color:var(--t3)}
+.nt svg{width:15px;height:15px;flex:none;margin-top:4px;color:var(--t3)}
 
 /* ── 대안과 추천 (일정 카드 사이에 접어 둔다) ── */
 .altrow{margin:-4px 0 12px;border-radius:14px;overflow:hidden;
@@ -133,7 +134,7 @@ img{display:block}
 .altrow.plus .k{color:var(--t2)}
 .altrow.note{background:transparent;box-shadow:inset 0 0 0 1px var(--g2)}
 .altrow.note .k{color:var(--t3)}
-.altrow summary{display:flex;align-items:center;gap:9px;padding:12px 16px;cursor:pointer;list-style:none;
+.altrow summary{display:flex;align-items:center;gap:8px;padding:12px 16px;cursor:pointer;list-style:none;
   -webkit-tap-highlight-color:transparent}
 .altrow summary::-webkit-details-marker{display:none}
 .altrow summary::after{content:'';margin-left:auto;flex:none;width:7px;height:7px;
@@ -144,11 +145,11 @@ img{display:block}
 .altrow .n{font-size:14.5px;font-weight:600;letter-spacing:-.015em}
 .altrow .body{padding:0 16px 12px}
 .altrow .s{font-size:13.5px;color:var(--t2);line-height:1.5}
-.altrow .w{margin-top:9px;padding-top:10px;border-top:1px solid var(--hair);font-size:13px;color:var(--t3);line-height:1.55}
+.altrow .w{margin-top:8px;padding-top:8px;border-top:1px solid var(--hair);font-size:13px;color:var(--t3);line-height:1.55}
 
   backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:inset 0 0 0 1px var(--g2)}
-.btnrow{display:flex;gap:7px;margin-top:11px;flex-wrap:wrap}
-.mapbtn{display:inline-flex;align-items:center;gap:5px;height:30px;padding:0 12px;
+.btnrow{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.mapbtn{display:inline-flex;align-items:center;gap:4px;height:30px;padding:0 12px;
   border-radius:999px;background:var(--g3);box-shadow:inset 0 0 0 1px var(--g2);
   font-size:12.5px;font-weight:600;color:var(--t1);text-decoration:none;-webkit-tap-highlight-color:transparent}
 .mapbtn svg{width:13px;height:13px;color:var(--acc)}
@@ -164,21 +165,21 @@ img{display:block}
   background:var(--g1);backdrop-filter:blur(24px) saturate(1.3);-webkit-backdrop-filter:blur(24px) saturate(1.3);
   box-shadow:inset 0 0 0 1px var(--g2)}
 .money .lab{font-size:13px;color:var(--t3)}
-.money .big{margin-top:5px;font-size:32px;font-weight:700;letter-spacing:-.04em;font-variant-numeric:tabular-nums;
+.money .big{margin-top:4px;font-size:32px;font-weight:700;letter-spacing:-.04em;font-variant-numeric:tabular-nums;
   white-space:nowrap}
 .money .big .rng{font-size:19px;font-weight:600;letter-spacing:-.02em;color:var(--t2)}
-.money .per{margin-top:5px;font-size:13.5px;color:var(--t2);font-variant-numeric:tabular-nums;line-height:1.5}
-.rows{margin-top:15px}
+.money .per{margin-top:4px;font-size:13.5px;color:var(--t2);font-variant-numeric:tabular-nums;line-height:1.5}
+.rows{margin-top:16px}
 .row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:12px 0;
   border-top:1px solid var(--hair)}
 .row .k{font-size:15px;font-weight:500;flex:1;min-width:0}
 .row .v{flex:none}
-.row .k small{display:block;font-size:12.5px;font-weight:400;color:var(--t3);margin-top:3px;line-height:1.45}
+.row .k small{display:block;font-size:12.5px;font-weight:400;color:var(--t3);margin-top:4px;line-height:1.45}
 .row .v{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
 .row .v.un{font-weight:500;color:var(--t3)}
 
 /* ── 정해야 할 것 ── */
-.grouph{display:flex;align-items:baseline;gap:9px;margin:22px var(--ins) 9px}
+.grouph{display:flex;align-items:baseline;gap:8px;margin:22px var(--ins) 9px}
 .grouph .gt{font-size:19px;font-weight:600;letter-spacing:-.025em}
 .groupd{margin:0 var(--ins) 12px;font-size:13.5px;line-height:1.55;color:var(--t3)}
 .issues{padding:0 var(--ins)}
@@ -188,7 +189,7 @@ img{display:block}
 .issue-n{font-size:16.5px;font-weight:600;letter-spacing:-.02em;display:flex;align-items:baseline;
   justify-content:space-between;gap:12px}
 .issue-n .pr{flex:none;font-size:14px;font-weight:600;color:var(--acc);font-variant-numeric:tabular-nums}
-.issue-s{margin-top:6px;font-size:14px;line-height:1.55;color:var(--t2)}
+.issue-s{margin-top:4px;font-size:14px;line-height:1.55;color:var(--t2)}
 
 .foot{margin:24px var(--ins) 0;font-size:13px;color:var(--t3);line-height:1.65}
 .credit{margin:16px var(--ins) 0;font-size:12px;color:rgba(255,255,255,.46);line-height:1.6}

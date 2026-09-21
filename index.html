@@ -10,10 +10,11 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="나고야">
 <link rel="icon" href="data:image/svg+xml,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'><rect%20width='32'%20height='32'%20rx='4'%20fill='%230A0806'/><path%20d='M7%2011h14v7a6%206%200%200%201-6%206h-2a6%206%200%200%201-6-6z'%20fill='none'%20stroke='%23E8B457'%20stroke-width='2.4'%20stroke-linejoin='round'/><path%20d='M21%2013h2.5a3%203%200%200%201%200%206H21'%20fill='none'%20stroke='%23E8B457'%20stroke-width='2.4'%20stroke-linecap='round'/><path%20d='M6%2027h17'%20fill='none'%20stroke='%23E8B457'%20stroke-width='2.4'%20stroke-linecap='round'/></svg>">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
 <style>:root{color-scheme:dark}html{background:#0A0806}*{box-sizing:border-box}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body><style>
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css');
 
 *{box-sizing:border-box}
 
@@ -39,7 +40,7 @@ body{margin:0}
 
 /* 배경은 html 이 칠한다. 그래야 모바일 바운스 스크롤에서 드러나는
    오버스크롤 영역까지 본문과 같은 색이 된다. */
-html{background:var(--bg); transition:background .5s ease}
+html{background:var(--bg)}
 
 /* iOS 에서 탭하거나 길게 누를 때 뜨는 파란 계열 기본 표시를 걷는다.
    키보드로 탐색할 때는 :focus-visible 로 테두리가 보인다. */
@@ -91,6 +92,7 @@ img{display:block}
     rgba(255,255,255,.38) 0%, rgba(255,255,255,.12) 24%,
     rgba(255,255,255,0) 50%, rgba(255,255,255,.07) 74%, rgba(255,255,255,.22) 100%);
   -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite:xor; mask-composite:exclude}
 .daycard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .daycard .sh{position:absolute;inset:0;background:linear-gradient(to bottom,
@@ -130,7 +132,7 @@ img{display:block}
 .tab[aria-selected="true"]{background:#fff;color:#111;box-shadow:none;font-weight:600}
 
 /* ── 일정 카드 ── */
-.tl{padding:10px var(--ins) 0}
+.tl{padding:12px var(--ins) 0}
 .item{position:relative;padding:12px 16px;margin-bottom:12px;border-radius:18px;
   background:var(--g1);backdrop-filter:blur(24px) saturate(1.3);-webkit-backdrop-filter:blur(24px) saturate(1.3);
   box-shadow:inset 0 0 0 1px var(--g2)}
@@ -154,7 +156,6 @@ img{display:block}
   background:var(--g1);box-shadow:inset 0 0 0 1px var(--g2)}
 .altrow.b{background:color-mix(in srgb, var(--acc) 9%, transparent);
   box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--acc) 22%, transparent)}
-.altrow.plus{background:var(--g1);box-shadow:inset 0 0 0 1px var(--g2)}
 .altrow.plus .k{color:var(--t2)}
 .altrow.note{background:transparent;box-shadow:inset 0 0 0 1px var(--g2)}
 .altrow.note .k{color:var(--t3)}
@@ -181,7 +182,7 @@ img{display:block}
 
 
 /* ── 예산 ── */
-.topbar{position:sticky;top:0;z-index:5;padding:12px var(--ins) 10px 12px;display:flex;align-items:center;gap:12px;
+.topbar{position:sticky;top:0;z-index:5;padding:12px var(--ins) 12px 12px;display:flex;align-items:center;gap:12px;
   background:linear-gradient(to bottom,var(--bg) 62%,transparent)}
 .topbar .tt{margin:0;font-size:18px;font-weight:600;letter-spacing:-.02em}
 .money{margin:0 var(--ins) 12px;padding:12px 16px;border-radius:20px;
@@ -202,7 +203,7 @@ img{display:block}
 .row .v.un{font-weight:500;color:var(--t3)}
 
 /* ── 정해야 할 것 ── */
-.grouph{display:flex;align-items:baseline;gap:8px;margin:22px var(--ins) 9px}
+.grouph{display:flex;align-items:baseline;gap:8px;margin:24px var(--ins) 8px}
 .grouph .gt{font-size:20px;font-weight:600;letter-spacing:-.025em}
 .groupd{margin:0 var(--ins) 12px;font-size:14px;line-height:1.55;color:var(--t3)}
 .issues{padding:0 var(--ins)}
@@ -568,10 +569,8 @@ img{display:block}
       ],
       },  ];
 
-  const app = document.getElementById('app');
   const tabs = document.getElementById('tabs');
   const tl = document.getElementById('tl');
-  let cur = 1;
 
   const go = new Date(2026,9,16), now = new Date();
   const left = Math.round((go - new Date(now.getFullYear(),now.getMonth(),now.getDate()))/86400000);
@@ -593,7 +592,6 @@ img{display:block}
     `<button class="tab" role="tab" data-tab="${d.n}">${d.n}일차</button>`).join('');
 
   function renderDay(n){
-    cur = n;
     const d = PLAN.find(x=>x.n===n);
     document.documentElement.dataset.day = n;
     const tc0 = document.querySelector('meta[name="theme-color"]');
@@ -621,7 +619,7 @@ img{display:block}
         ${it.s?`<div class="s">${it.s}</div>`:''}
         ${(it.g||it.book)?`<div class="btnrow">
           ${it.g?`<a class="mapbtn" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(it.g)}" target="_blank" rel="noopener"><svg><use href="#i-pin"/></svg>지도</a>`:''}
-          ${it.book?`<a class="mapbtn book" href="${it.book}" target="_blank" rel="noopener"><svg><use href="#i-book"/></svg>${it.bl||(it.book.includes('meitetsu')?'예약':'메뉴와 예약')}</a>`:''}
+          ${it.book?`<a class="mapbtn${it.bl?'':' book'}" href="${it.book}" target="_blank" rel="noopener"><svg><use href="#i-${it.bl?'pin':'book'}"/></svg>${it.bl||(it.book.includes('meitetsu')?'예약':'메뉴와 예약')}</a>`:''}
         </div>`:''}
         ${(it.notes||[]).map(nt=>`<div class="nt">
           <svg><use href="#i-alert"/></svg><span>${nt.s}</span></div>`).join('')}
@@ -655,6 +653,9 @@ img{display:block}
       {n:'카에루 만주', p:'3개 486엔', s:'아오야기 소혼케. 6개는 945엔입니다.'},
       {n:'우이로 히토쿠치', p:'10개 1,080엔', s:'아오야기 소혼케'}
     ]},
+    {w:'몽벨 사카에점', d:'사카에4-1-1 2층 · 매일 10:00~20:00 · 3일차 17:00 일정에 있습니다', items:[
+      {n:'아기 옷', s:'키즈 라인에서 봅니다'}
+    ]},
     {w:'칼디 나고야역점', d:'게이트워크 B1F · 매일 10:00~22:00 · 3일차 20:50 일정에 있습니다', items:[
       {n:'냉침 커피', s:'水出しコーヒー'},
       {n:'드립백', s:'ドリップバッグ'},
@@ -668,8 +669,8 @@ img{display:block}
     ]}
   ];
   document.getElementById('shoplist').innerHTML = SHOP.map(g=>`
-    <div class="grouph" style="margin:20px 0 9px"><span class="gt">${g.w}</span></div>
-    <p class="groupd" style="margin:0 0 10px">${g.d}</p>
+    <div class="grouph" style="margin:20px 0 8px"><span class="gt">${g.w}</span></div>
+    <p class="groupd" style="margin:0 0 12px">${g.d}</p>
     ${g.items.map(it=>`<div class="issue">
       <div class="issue-n">${it.n}${it.p?`<span class="pr">${it.p}</span>`:''}</div>
       ${it.s?`<div class="issue-s">${it.s}</div>`:''}

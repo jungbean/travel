@@ -19,7 +19,7 @@
 
 body{margin:0}
 
-.app{
+:root{
   /* 간격은 4·8·12·16·20·24·32 만 쓴다. 8pt 그리드에 half-step 4 를 허용한 계단이다. */
   /* 글자 크기는 48·32·28·20·18·16·14·12·10 만 쓴다. */
   --ins:16px;
@@ -31,16 +31,30 @@ body{margin:0}
   --t1:#FFFFFF;
   --t2:rgba(255,255,255,.58);
   --t3:rgba(255,255,255,.47);
+}
+:root[data-day="1"]{--bg:#12100A; --acc:#E0B457}
+:root[data-day="2"]{--bg:#0F120B; --acc:#AECB74}
+:root[data-day="3"]{--bg:#08121A; --acc:#54B7D2}
+:root[data-day="4"]{--bg:#0C1016; --acc:#86AEDC}
+
+/* 배경은 html 이 칠한다. 그래야 모바일 바운스 스크롤에서 드러나는
+   오버스크롤 영역까지 본문과 같은 색이 된다. */
+html{background:var(--bg); transition:background .5s ease}
+
+/* iOS 에서 탭하거나 길게 누를 때 뜨는 파란 계열 기본 표시를 걷는다.
+   키보드로 탐색할 때는 :focus-visible 로 테두리가 보인다. */
+*{-webkit-tap-highlight-color:transparent}
+:focus{outline:none}
+:focus-visible{outline:2px solid var(--acc); outline-offset:2px; border-radius:6px}
+::selection{background:color-mix(in srgb, var(--acc) 32%, transparent)}
+.daycard:active,.linkrow:active,.tab:active,.gbtn:active,.mapbtn:active,
+.altrow summary:active{opacity:.72}
+.app{
   font-family:'Pretendard Variable',Pretendard,-apple-system,system-ui,sans-serif;
   word-break:keep-all; line-height:1.55; color:var(--t1);
-  background:var(--bg); min-height:100vh; -webkit-font-smoothing:antialiased;
+  min-height:100vh; -webkit-font-smoothing:antialiased;
   max-width:520px; margin:0 auto; padding-bottom:calc(64px + env(safe-area-inset-bottom));
-  transition:background .5s ease;
 }
-.app[data-day="1"]{--bg:#12100A; --acc:#E0B457}
-.app[data-day="2"]{--bg:#0F120B; --acc:#AECB74}
-.app[data-day="3"]{--bg:#08121A; --acc:#54B7D2}
-.app[data-day="4"]{--bg:#0C1016; --acc:#86AEDC}
 
 .wrap{padding:0 var(--ins)}
 [hidden]{display:none!important}
@@ -575,7 +589,9 @@ img{display:block}
   function renderDay(n){
     cur = n;
     const d = PLAN.find(x=>x.n===n);
-    app.dataset.day = n;
+    document.documentElement.dataset.day = n;
+    const tc0 = document.querySelector('meta[name="theme-color"]');
+    if(tc0) tc0.content = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
     const im = document.getElementById('dc-img');
     im.src = d.img; im.alt = d.alt;
     document.getElementById('dh-d').textContent = d.date;
@@ -656,8 +672,11 @@ img{display:block}
   function show(view){
     ['home','day','budget','shop'].forEach(v=>
       document.getElementById('v-'+v).hidden = (v!==view));
-    if(view==='home') app.removeAttribute('data-day');
-    else if(view!=='day') app.dataset.day = 1;
+    const root = document.documentElement;
+    if(view==='home') root.removeAttribute('data-day');
+    else if(view!=='day') root.dataset.day = 1;
+    const tc = document.querySelector('meta[name="theme-color"]');
+    if(tc) tc.content = getComputedStyle(root).getPropertyValue('--bg').trim();
     window.scrollTo(0,0);
     // 눌렀던 버튼이 hidden 으로 사라지므로 포커스를 새 화면으로 옮긴다.
     const sec = document.getElementById('v-'+view);
